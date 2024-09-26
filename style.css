@@ -17,8 +17,8 @@ nav{
     align-items: center;
 }
 nav img{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 .nav-links{
     flex: 1;
