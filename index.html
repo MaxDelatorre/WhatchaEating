@@ -34,24 +34,17 @@
     <!-------Calorie Calculator section-->
     <section class="calorie calculator">
         <h1>Calorie Calculator</h1>
-        <p>testing calories</p>
-
+        <input type="text" id="foodItem" placeholder="Type a food item...">
+        <button id="searchBtn">Search</button>
+        <div id="results"></div>
     </section>
+    
 
 
 
 
 <!-------------JavaScript for toggling menu------->
-    <script>
-        var navLinks = document.getElementById("navLinks");
-        function showMenu(){
-            navLinks.style.right = "0";
-        }
-        function hideMenu(){
-            navLinks.style.right = "-150px";
-        }
-
-    </script>
+    <script src="calorieCalculator.js"></script>
 
 </body>
 </html>
