@@ -1,0 +1,51 @@
+/* General button styling */
+.open-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.8;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    border: 3px solid #f1f1f1;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Form container styling */
+.form-container {
+    padding: 10px;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Buttons */
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.form-container .cancel {
+    background-color: red;
+}
