@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Whatcha Eating?</title>
     <link rel="stylesheet" href="login-signup.css">
 </head>
+
 <body>
     <div class="form-popup" id="loginForm">
         <form class="form-container">
             <h2>Login</h2>
 
             <label for="user"><b>User</b></label>
-            <input type="text" placeholder="Enter user name" name="user name" required>
+            <input type="text" id="user" placeholder="Enter User Name" name="User" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="text" id="psw" placeholder="Enter Password" name="psw" required>
 
-            <button type="submit" class="btn submit" onclick="location.href='../user-file/user-index.html'">Login</button>
+            <button type="submit" class="btn submit"
+                onclick="location.href='../user-file/user-index.html'">Login</button>
             <button type="button" class="btn cancel" onclick="location.href='../index.html'">Close</button>
         </form>
     </div>
     <script src="login-signup.js"></script>
 </body>
+
 </html>
