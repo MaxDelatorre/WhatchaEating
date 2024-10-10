@@ -9,6 +9,11 @@
     background-position: center;
     background-size: cover;
     position: relative;
+
+    /* Flexbox properties */
+    display: flex; /* Use flex to center child elements */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 /* General button styling */
@@ -24,7 +29,7 @@
 
 /* The popup form - hidden by default */
 .form-popup {
-    display: block;
+    /*display: block;*/
     width: 100%;
     max-width: 400px;
     margin: auto;
