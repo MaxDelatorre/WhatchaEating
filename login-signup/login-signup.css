@@ -44,7 +44,7 @@
 }
 
 .form-container label{
-    color: white;
+    color: black;
 }
 
 /* Full-width input fields */
@@ -59,7 +59,7 @@
 
 /* Buttons */
 .form-container .btn {
-    background-color: transparent;/*#4CAF50;*/
+    background-color: #4CAF50;
     color: white;
     padding: 16px 20px;
     border: white;
