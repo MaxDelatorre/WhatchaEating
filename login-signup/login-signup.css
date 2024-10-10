@@ -33,8 +33,8 @@
     width: 100%;
     max-width: 400px;
     margin: auto;
-    border: 3px solid #070606;
-    background-color: white;
+    border: 3px solid white;
+    background-color: transparent;
     padding: 20px;
 }
 
@@ -44,7 +44,11 @@
 }
 
 .form-container label{
-    color: black;
+    color: white;
+}
+
+.form-container h2{
+    color: white;
 }
 
 /* Full-width input fields */
@@ -59,10 +63,10 @@
 
 /* Buttons */
 .form-container .btn {
-    background-color: #4CAF50;
+    background-color: transparent;
     color: white;
     padding: 16px 20px;
-    border: white;
+    /*border: ;*/
     cursor: pointer;
     width: 100%;
     margin: 10px 0;
@@ -75,7 +79,7 @@
 }
 
 .form-container .cancel {
-    background-color: red;
+    background-color: transparent;
 }
 
 .form-container .cancel:hover {
