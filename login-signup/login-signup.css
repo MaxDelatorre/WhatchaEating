@@ -43,6 +43,10 @@
     padding: 10px;
 }
 
+.form-container label{
+    color: white;
+}
+
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password] {
     width: 100%;
@@ -55,15 +59,27 @@
 
 /* Buttons */
 .form-container .btn {
-    background-color: #4CAF50;
+    background-color: transparent;/*#4CAF50;*/
     color: white;
     padding: 16px 20px;
-    border: none;
+    border: white;
     cursor: pointer;
     width: 100%;
     margin: 10px 0;
 }
 
+.form-container .btn:hover {
+    border: 1px solid #4CAF50;
+    background: #4CAF50;
+    transition: 1s;
+}
+
 .form-container .cancel {
     background-color: red;
+}
+
+.form-container .cancel:hover {
+    border: 1px solid red;
+    background: red;
+    transition: 1s;
 }
