@@ -9,20 +9,22 @@
 </head>
 
 <body>
-    <div class="form-popup" id="loginForm">
-        <form class="form-container">
-            <h2>Login</h2>
+    <div class="form-background">
+        <div class="form-popup" id="loginForm">
+            <form class="form-container">
+                <h2>Login</h2>
 
-            <label for="user"><b>User</b></label>
-            <input type="text" id="user" placeholder="Enter User Name" name="User" required>
+                <label for="user"><b>User</b></label>
+                <input type="text" id="user" placeholder="Enter User Name" name="User" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="text" id="psw" placeholder="Enter Password" name="psw" required>
+                <label for="psw"><b>Password</b></label>
+                <input type="text" id="psw" placeholder="Enter Password" name="psw" required>
 
-            <button type="submit" class="btn submit"
-                onclick="location.href='../user-file/user-index.html'">Login</button>
-            <button type="button" class="btn cancel" onclick="location.href='../index.html'">Close</button>
-        </form>
+                <button type="submit" class="btn submit"
+                    onclick="location.href='../user-file/user-index.html'">Login</button>
+                <button type="button" class="btn cancel" onclick="location.href='../index.html'">Close</button>
+            </form>
+        </div>
     </div>
     <script src="login-signup.js"></script>
 </body>
