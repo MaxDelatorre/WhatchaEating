@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
-    <title>Whatcha Eating? - Free Calorie Tracker!</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calorie Calculator</title>
+    <link rel="stylesheet" href="calorie-calculator.css">
 </head>
 <body>
-<!-------------Including JS------->
-    <script src="calculator.js"></script>
+    <div class="container">
+        <h1>Calorie Calculator</h1>
+        <form id="calorie-form">
+            <input type="text" id="food" placeholder="Enter a food item..." required>
+            <button type="submit">Get Calories</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
 
+    <script src="calculator.js"></script>
 </body>
 </html>
