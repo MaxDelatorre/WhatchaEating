@@ -19,6 +19,10 @@
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" id="psw" placeholder="Enter Password" name="psw" required>
+                
+                <div id = "reveal-password">
+                    <input type="checkbox" id="showPassword" onclick="togglePassword()">
+                </div>
 
                 <button type="submit" class="btn submit" onclick="location.href='../user-file/user-index.html'">Login</button>
                 <button type="button" class="btn cancel" onclick="location.href='../index.html'">Close</button>
