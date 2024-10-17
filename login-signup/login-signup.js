@@ -1,11 +1,10 @@
-// Function to toggle the password visibility
-function togglePassword() {
-    const passwordField = document.getElementById('psw');
-    const showPasswordCheckbox = document.getElementById('showPassword');
+const passwordInput = document.querySelector("#psw");
+const showPasswordCheckbox = document.querySelector("#showPassword");
 
-    if (showPasswordCheckbox.checked) {
-        passwordField.type = 'text';
+showPasswordCheckbox.addEventListener("change", function () {
+    if (passwordInput.getAttribute("type") === "password") {
+      passwordInput.setAttribute("type", "text");
     } else {
-        passwordField.type = 'password';
+      passwordInput.setAttribute("type", "password");
     }
-}
+  });
