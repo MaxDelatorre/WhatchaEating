@@ -12,18 +12,21 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1000px;
+    height: 500px;
     margin: 100px auto;
     padding: 30px;
-    background: rgb(255, 255, 255);
+    background: rgba(203, 226, 222, 0.822);
     border-radius: 50px;
-    box-shadow: 0 0 50px rgba(225, 28, 28, 0.1);
+    box-shadow: 0 0 50px rgba(231, 227, 227, 0.1);
 }
 
-h1 {
+.container h1 {
     text-align: center;
     margin-bottom: 20px;
+    font-family: Arial, sans-serif;
 }
+
 
 form {
     display: flex;
@@ -53,14 +56,31 @@ button:hover {
     background-color: #218838;
 }
 
-.result {
-    text-align: center;
-}
-
 .result h2 {
     margin-bottom: 50px;
+    text-transform: capitalize;
+    text-align: center;
 }
 
 .result p {
     margin-bottom: 15px;
+    text-align: left;
+}
+
+.result img {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    margin-left: 450px;
+    margin-top: -350px;
+}
+.exterior {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: -70px;
+}
+.exterior img {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
 }

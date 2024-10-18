@@ -32,9 +32,11 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
                 <p>Carbohydrates: ${food.nf_total_carbohydrate} g</p>
                 <p>Sodium: ${food.nf_sodium} g</p>
                 <p>Sugar: ${food.nf_sugars} g</p>
+                <img src="${food.photo.highres}">
             `;
         } else {
             resultDiv.innerHTML = '<p>No data found for that food item.</p>';
+            foodImageDiv.innerHTML = '';
         }
     })
     .catch(error => {
