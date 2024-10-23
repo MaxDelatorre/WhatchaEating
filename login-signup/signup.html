@@ -10,8 +10,8 @@
 
 <body>
     <div class="form-background">
-        <div class="form-popup" id="signupForm">
-            <form class="form-container">
+        <div class="form-popup">
+            <form class="form-container" id="signupForm" method="POST" action="/signup">
                 <h2>Sign Up</h2>
 
                 <label for="user"><b>User</b></label>
@@ -27,7 +27,7 @@
                     <input type="checkbox" id="showPassword"> <label for="showPassword">Show Password</label>
                 </div>
 
-                <button type="submit" class="btn submit" onclick="location.href='../user-file/user-index.html'">Sign Up</button>
+                <button type="button" class="btn submit" onclick="location.href='../user-file/user-index.html'">Sign Up</button>
                 <button type="button" class="btn cancel" onclick="location.href='../index.html'">Close</button>
             </form>
         </div>
