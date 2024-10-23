@@ -24,3 +24,17 @@ document.querySelector("#signupForm").addEventListener("submit", function (event
     alert("Passwords do not match. Please try again.");
   }
 });
+
+/*// For users signinup (probably will have password validation in here)
+document.querySelector("#signupForm").addEventListener("submit", function (event) {
+
+});
+
+*/
+
+/*// For users logging in
+document.querySelector("#loginForm").addEventListener("submit", function (event) {
+
+});
+
+*/
