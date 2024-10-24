@@ -37,7 +37,7 @@ app.post('/signup', async (req, res) => {
     // Save the user
     users.push({ username, password: hashedPassword });
 
-    res.status(201).send('User registered successfully');
+    res.redirect('/user-file/user-index.html');
 });
 
 // Handle user login
@@ -52,11 +52,11 @@ app.post('/login', async (req, res) => {
 
     // Compare the password with the stored hashed password
     const match = await bcrypt.compare(password, user.password);
-    if (match) {
-        res.send('Login successful');
-    } else {
+    if (!match) {
         res.status(400).send('Invalid username or password');
     }
+
+    res.redirect('/user-file/user-index.html');
 });
 
 // Start the server

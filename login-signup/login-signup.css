@@ -52,6 +52,10 @@
     color: black;
 }
 
+.form-container input:invalid{
+    border: 2px red;
+}
+
 /* Full-width input fields */
 .form-container input[type=text],
 .form-container input[type=password] {
@@ -68,7 +72,6 @@
     background-color: #4CAF50;
     color: white;
     padding: 16px 20px;
-    /*border: black;*/
     cursor: pointer;
     width: 100%;
     margin: 10px 0;

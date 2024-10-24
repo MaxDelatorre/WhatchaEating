@@ -18,7 +18,7 @@ showPasswordCheckbox.addEventListener("change", function () {
 document.querySelector("#signupForm").addEventListener("submit", function (event) {
   const password = passwordInput.value;
   const repeatPassword = repeatPasswordInput.value;
-
+  
   if (password !== repeatPassword) {
     event.preventDefault(); // Prevent form submission
     alert("Passwords do not match. Please try again.");
