@@ -35,27 +35,6 @@ form {
     margin-bottom: 20px;
 }
 
-input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
 .result h2 {
     margin-bottom: 50px;
     text-transform: capitalize;
@@ -76,11 +55,43 @@ button:hover {
 }
 .exterior {
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: -70px;
+    margin-top: 20px;
+    margin-bottom: -80px;
 }
-.exterior img {
+.logo {
+    text-align: center;
+    margin-top: 15px;
+}
+.logo img {
     height: 150px;
     width: 150px;
     border-radius: 10px;
+}
+#calorie-form {
+    display: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#calorie-form input[type="text"] {
+    padding: 10px;
+    flex: .5;
+    border: 5px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+    width: 300px;
+}
+
+#calorie-form button {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#calorie-form button:hover {
+    background-color: #218838;
 }

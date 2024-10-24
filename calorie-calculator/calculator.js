@@ -1,3 +1,11 @@
+function getArticle(foodName) {
+    const firstLetter = foodName.charAt(0).toLowerCase();
+    if (['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].includes(firstLetter)) {
+        return 'an';
+    } else {
+        return 'a';
+    }
+}
 document.getElementById('calorie-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -22,8 +30,10 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
     .then(data => {
     console.log(data);
     const resultDiv = document.getElementById('result');
+    const summaryDiv = document.getElementById('calorie-summary');
         if (data.foods && data.foods.length > 0) {
             const food = data.foods[0];
+            const article = getArticle(food.food_name);
             resultDiv.innerHTML = `
                 <h2>${food.food_name}</h2>
                 <p>Calories: ${food.nf_calories} kcal</p>
@@ -34,13 +44,16 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
                 <p>Sugar: ${food.nf_sugars} g</p>
                 <img src="${food.photo.highres}">
             `;
+            summaryDiv.innerHTML = `There are a total of ${food.nf_calories} calories in ${article} ${food.food_name}.`;
         } else {
             resultDiv.innerHTML = '<p>No data found for that food item.</p>';
             foodImageDiv.innerHTML = '';
+            summaryDiv.innerHTML = '';
         }
     })
     .catch(error => {
         console.error('Error fetching data:', error);
         document.getElementById('result').innerHTML = '<p>There was an error retrieving the data.</p>';
+        document.getElementById('calorie-summary').innerHTML = '';
     });
 });
