@@ -12,6 +12,8 @@ body {
 }
 
 .container {
+    align-items: center;
+    justify-content: space-between;
     max-width: 1000px;
     height: 500px;
     margin: 100px auto;
@@ -19,6 +21,15 @@ body {
     background: rgba(203, 226, 222, 0.822);
     border-radius: 50px;
     box-shadow: 0 0 50px rgba(231, 227, 227, 0.1);
+}
+.left-side, .right-side {
+    flex: 1;
+    padding:20px;
+}
+.divider {
+    width: 1px;
+    background-color: black;
+    height: 90%;
 }
 
 .container h1 {
@@ -85,7 +96,7 @@ form {
 
 #calorie-form button {
     padding: 10px 20px;
-    background-color: #000000;
+    background-color: #318a96;
     color: white;
     border: none;
     border-radius: 20px;
@@ -99,4 +110,9 @@ form {
 #calorie-summary img {
     width: 50px ;
     vertical-align: middle;
+}
+#calorie-summary {
+    text-align: center;
+    font-size: 18px;
+    margin-top: -40px;
 }
