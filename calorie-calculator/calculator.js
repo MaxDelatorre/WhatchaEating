@@ -34,17 +34,17 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
         if (data.foods && data.foods.length > 0) {
             const food = data.foods[0];
             const article = getArticle(food.food_name);
-            resultDiv.innerHTML = `
-                <h2>${food.food_name}</h2>
-                <p>Calories: ${food.nf_calories} kcal</p>
-                <p>Protein: ${food.nf_protein} g</p>
-                <p>Fats: ${food.nf_total_fat} g</p>
-                <p>Carbohydrates: ${food.nf_total_carbohydrate} g</p>
-                <p>Sodium: ${food.nf_sodium} g</p>
-                <p>Sugar: ${food.nf_sugars} g</p>
-                <img src="${food.photo.highres}">
-            `;
-            summaryDiv.innerHTML = `There are a total of ${food.nf_calories} calories in ${article} ${food.food_name}.`;
+
+            document.getElementById('food-name').innerHTML = `<h2>${food.food_name}</h2>`;
+            document.getElementById('calories').innerHTML = `<p>Calories: ${food.nf_calories} kcal</p>`;
+            document.getElementById('protein').innerHTML = `<p>Protein: ${food.nf_protein} g</p>`;
+            document.getElementById('fats').innerHTML = `<p>Fats: ${food.nf_total_fat} g</p>`;
+            document.getElementById('carbohydrates').innerHTML = `<p>Carbohydrates: ${food.nf_total_carbohydrate} g</p>`;
+            document.getElementById('sodium').innerHTML = `<p>Sodium: ${food.nf_sodium} mg</p>`;
+            document.getElementById('sugar').innerHTML = `<p>Sugar: ${food.nf_sugars} g</p>`;
+            document.getElementById('food-image').innerHTML = `<img src="${food.photo.highres}" alt="${food.food_name} image">`;
+            
+            summaryDiv.innerHTML = `There are a total of ${food.nf_calories} calories in ${article} ${food.food_name}. <img src="${food.photo.highres}" alt="${food.food_name}">`;
         } else {
             resultDiv.innerHTML = '<p>No data found for that food item.</p>';
             foodImageDiv.innerHTML = '';

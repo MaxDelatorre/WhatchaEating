@@ -95,3 +95,8 @@ form {
 #calorie-form button:hover {
     background-color: #218838;
 }
+
+#calorie-summary img {
+    width: 50px ;
+    vertical-align: middle;
+}
