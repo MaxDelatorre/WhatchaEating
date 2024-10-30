@@ -1,3 +1,4 @@
+
 function getArticle(foodName) {
     const firstLetter = foodName.charAt(0).toLowerCase();
     if (['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].includes(firstLetter)) {
