@@ -18,10 +18,6 @@ app.use(bodyParser.json());
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname, '../')));
 
-// In-memory user storage 
-let users = []; //Will restart when server stops
-
-
 // Handle user sign-up
 app.post('/signup', async (req, res) => {
     const { User: username, psw: password } = req.body; // Get username and password from form data
