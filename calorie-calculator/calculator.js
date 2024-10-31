@@ -10,6 +10,12 @@ function getArticle(foodName) {
 document.getElementById('calorie-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
+    if (sessionStorage.getItem("shouldReload") === "true") {
+        sessionStorage.removeItem("shouldReload");  // Clear the flag
+        location.reload();  // Reload the page
+        return;  // Stop further execution to prevent API call on reload
+    }
+
     const foodItem = document.getElementById('food').value.trim();
     
     const apiUrl = 'https://trackapi.nutritionix.com/v2/natural/nutrients';
@@ -56,5 +62,8 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
         console.error('Error fetching data:', error);
         document.getElementById('result').innerHTML = '<p>There was an error retrieving the data.</p>';
         document.getElementById('calorie-summary').innerHTML = '';
+        
+        sessionStorage.setItem("shouldReload", "true");
     });
+    
 });
