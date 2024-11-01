@@ -9,19 +9,24 @@ function getArticle(foodName) {
 }
 document.getElementById('calorie-form').addEventListener('submit', function(e) {
     e.preventDefault();
-
-    if (sessionStorage.getItem("shouldReload") === "true") {
-        sessionStorage.removeItem("shouldReload");  // Clear the flag
-        location.reload();  // Reload the page
-        return;  // Stop further execution to prevent API call on reload
-    }
-
     const foodItem = document.getElementById('food').value.trim();
-    
+    sessionStorage.setItem("foodQuery", foodItem);
+    location.reload();
+});
+window.addEventListener("load", function() {
+    const foodItem = sessionStorage.getItem("foodQuery");
+    if (!foodItem) return; //change later if wanting to add action if no food item is present
+
+    // clears sessionStorage, could add timer but not needed at the moment ZERO BUGS
+    sessionStorage.removeItem("foodQuery");
+
+
     const apiUrl = 'https://trackapi.nutritionix.com/v2/natural/nutrients';
     const apiKey = 'e88eee93d9f28ac856e2af2f2ebdc642';
     const appId = 'a7b8cad6';
-
+    const resultDiv = document.getElementById('result');
+    const summaryDiv = document.getElementById('calorie-summary');
+    const foodImageDiv = document.getElementById('food-image');
     fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -36,8 +41,6 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {
     console.log(data);
-    const resultDiv = document.getElementById('result');
-    const summaryDiv = document.getElementById('calorie-summary');
         if (data.foods && data.foods.length > 0) {
             const food = data.foods[0];
             const article = getArticle(food.food_name);
@@ -53,7 +56,7 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
             
             summaryDiv.innerHTML = `There are a total of ${food.nf_calories} calories in ${article} ${food.food_name}. <img src="${food.photo.highres}" alt="${food.food_name}">`;
         } else {
-            resultDiv.innerHTML = '<p>No data found for that food item.</p>';
+            resultDiv.innerHTML = '<p>No data found for that food item. Try checking your spelling.</p>';
             foodImageDiv.innerHTML = '';
             summaryDiv.innerHTML = '';
         }
@@ -62,8 +65,5 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
         console.error('Error fetching data:', error);
         document.getElementById('result').innerHTML = '<p>There was an error retrieving the data.</p>';
         document.getElementById('calorie-summary').innerHTML = '';
-        
-        sessionStorage.setItem("shouldReload", "true");
     });
-    
 });
