@@ -17,13 +17,19 @@ body {
     justify-content: space-between;
     align-items: center;
     max-width: 1000px;
-    height: 500px;
+    height: auto;
     margin: 100px auto;
     padding: 30px;
     background: rgba(203, 226, 222, 0.822);
     border-radius: 50px;
     box-shadow: 0 0 50px rgba(231, 227, 227, 0.1);
+    visibility: hidden;
 }
+
+.container.visible {
+    visibility: visbile;
+}
+
 .result {
     display: flex;
     justify-content: space-between;
@@ -35,19 +41,33 @@ body {
     width: 100%;
     height: 2px;
     background-color: black; 
-    margin-bottom: 20px;
     border: none; 
 }
 .left-side {
     flex: 1;
-    padding-right: 20px; 
+    justify-content: space-between;
+    padding-right: 30px; 
 }
+#serving_size{
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+#calories, #protein, #fats, #carbohydrates, #sodium, #sugar {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+}
+
+.result span {
+    display: flex;
+    
+}
+
 .right-side {
     flex: 1;
     text-align: right; 
 }
 .divider {
-    margin-top: -20px;
     width: 2px;
     background-color: black;
     height: auto;
@@ -68,8 +88,9 @@ form {
     margin-bottom: 20px;
 }
 
-.result h2 {
-    margin-bottom: 50px;
+.result h2 { 
+    margin-top: 25px;
+    margin-bottom: 25px;
     text-transform: capitalize;
     text-align: center;
 }
@@ -133,4 +154,15 @@ form {
     text-align: center;
     font-size: 18px;
     margin-top: -40px;
+}
+#serving_size {
+
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: black;
+    color: white;
+    width: auto;  
+    height: 40px;
+    padding: 5px;
 }
