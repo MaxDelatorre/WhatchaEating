@@ -6,36 +6,27 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: rgba(203, 226, 222, 0.822);
     color: #000000;
     font-size: 20px;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     max-width: 1000px;
     height: auto;
     margin: 100px auto;
     padding: 30px;
-    background: rgba(203, 226, 222, 0.822);
-    border-radius: 50px;
+    background-color: #f4f4f4;
     box-shadow: 0 0 50px rgba(231, 227, 227, 0.1);
     visibility: hidden;
 }
 
-.container.visible {
-    visibility: visbile;
+.result span {
+   
 }
 
-.result {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    position: relative;
+.container.visible {
+    visibility: visbile;
 }
 .horizontal-line {
     width: 100%;
@@ -43,9 +34,10 @@ body {
     background-color: black; 
     border: none; 
 }
+.left-side span {
+}
 .left-side {
-    flex: 1;
-    justify-content: space-between;
+    max-width: 350px;
     padding-right: 30px; 
 }
 #serving_size{
@@ -58,34 +50,19 @@ body {
     
 }
 
-.result span {
-    display: flex;
-    
-}
-
 .right-side {
-    flex: 1;
-    text-align: right; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 .divider {
-    width: 2px;
-    background-color: black;
-    height: auto;
-    align-self: stretch;
+    width: 0px;
 }
 
 .container h1 {
     text-align: center;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
-}
-
-
-form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
 }
 
 .result h2 { 
@@ -96,9 +73,14 @@ form {
 }
 
 .result p {
-    margin-bottom: 15px;
     text-align: left;
+    margin-bottom: 15px;
 }
+
+.result span {
+    text-align: right;
+}
+/*left off here continue at food image*/
 
 #food-image img {
     max-width: 00%;
@@ -140,6 +122,24 @@ form {
     border: none;
     border-radius: 20px;
     cursor: pointer;
+}
+
+
+#add-form button {
+    margin-top: auto;
+    padding: 10px 20px;
+    background-color: #318a96;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    bottom: 0;
+    right: 0;
+}
+
+#add-form button:hover {
+    background-color: #218838;
 }
 
 #calorie-form button:hover {

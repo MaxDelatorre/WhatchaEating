@@ -59,12 +59,12 @@ window.addEventListener("load", function() {
 
             document.getElementById('food-name').innerHTML = `<h2>${food.food_name}</h2>`;
             document.getElementById('calories').innerHTML = `<p>Calories: <span>${food.nf_calories} kcals</span></p>`;
-            document.getElementById('protein').innerHTML = `<p>Protein: <span>${food.nf_protein} g</span></p>`;
+            document.getElementById('protein').innerHTML = `<p>Protein: ${food.nf_protein} g</p>`;
             document.getElementById('fats').innerHTML = `<p>Fats: ${food.nf_total_fat} g</p>`;
             document.getElementById('carbohydrates').innerHTML = `<p>Carbohydrates: ${food.nf_total_carbohydrate} g</p>`;
             document.getElementById('sodium').innerHTML = `<p>Sodium: ${food.nf_sodium} mg</p>`;
             document.getElementById('sugar').innerHTML = `<p>Sugar: ${food.nf_sugars} g</p>`;
-            document.getElementById('food-image').innerHTML = `<img src="${food.photo.highres}" alt="${food.food_name} image">`;
+            
             servingSizeDiv.style.display = 'flex';
             servingSizeDiv.innerHTML = `Serving Size: ${food.serving_weight_grams} g`;
             
