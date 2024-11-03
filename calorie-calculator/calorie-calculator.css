@@ -162,16 +162,19 @@ body {
     border-bottom: 15px solid black;
 }
 
-/*#food-image img {
-    max-width: 00%;
-}*/
-
 /*RIGHT SIDE SECTION*/
-/*.right-side {
-    display: flex;
+.right-side {
+    margin-top: 10px;
+    border: 0px solid black;
+    width: 520px;
+    background-color: none;
     position: relative;
     justify-content: flex-start;
     align-items: flex-start;
+}
+.result {
+    display: flex;
+    justify-content: space-between;
     height: 100%;
 }
 
@@ -180,6 +183,7 @@ body {
     bottom: 0; 
     right: 0; 
     padding: 10px 20px;
+    margin: 10px;
     background-color: #318a96;
     color: white;
     border: none;
@@ -190,16 +194,9 @@ body {
 #add-form button:hover {
     background-color: #218838;
 }
-*/
 
-.right-side {
-    margin-top: 10px;
-    border: 2px solid black;
-    width: 520px;
-    background-color: red;
-
-}
 #burn-calories {
+    font-weight: 500;
     text-align: center;
     margin-top: 25px;
     font-size: 25px;
@@ -207,12 +204,21 @@ body {
 
 .runner img{
     height: 90px;
-    margin-top: 40px;
-    margin-left: 50px;
+    margin-top: 10px;
+    
+    animation: moveLeftRight 4s infinite linear;
+    text-align: center;
+}
+@keyframes moveLeftRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(450px);
+    }
+}
+#jogging-time {
+    text-align: center;
 }
 
-.result {
-    display: flex;
-    justify-content: space-between;
-    height: 100%;
-}
+

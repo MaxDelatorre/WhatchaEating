@@ -13,6 +13,10 @@ function showContainerIfContent() {
         container.style.visibility = 'hidden'; // if no content container hidden
     }
 }
+function calculateJoggingMinutes(calories) {
+    const caloriesPerMinute = 13; // 13 calories burned per minute of jogging
+    return (calories / caloriesPerMinute).toFixed(2); // Returns the time in minutes, rounded to 2 decimal places
+}
 
 document.getElementById('calorie-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -31,6 +35,7 @@ window.addEventListener("load", function() {
     const summaryDiv = document.getElementById('calorie-summary');
     const foodImageDiv = document.getElementById('food-image');
     const container = document.querySelector('.container');
+    const joggingTimeDiv = document.getElementById('jogging-time');
     const burncaloriesDiv = document.getElementById('burn-calories');
 
     fetch('data.json')
@@ -39,6 +44,7 @@ window.addEventListener("load", function() {
             const food = data.find(item => item.food_name.toLowerCase() === foodItem);
             if (food) {
                 const article = getArticle(food.food_name);
+                const joggingMinutes = calculateJoggingMinutes(food.nf_calories);
                 
                 //document.getElementById('food-name').innerHTML = `<h2>${food.food_name}</h2>`;
                 document.getElementById('calories').innerHTML = `<span class="label">Calories:</span> <span class="value">${food.nf_calories}</span>`;
@@ -56,7 +62,8 @@ window.addEventListener("load", function() {
                 
                 
                 summaryDiv.innerHTML = `There are a total of ${food.nf_calories} calories in ${article} ${food.food_name}. <img src="${food.photo.highres}" alt="${food.food_name}">`;
-                burncaloriesDiv.innerHTML = `To burn ${food.nf_calories} calories, you will have to...`;
+                burncaloriesDiv.innerHTML = `To burn ${food.nf_calories} calories you will have to...`;
+                joggingTimeDiv.innerHTML = `jog for approximately ${joggingMinutes} minutes.`;
                 // Call the function to show the container if content exists
                 showContainerIfContent();
             } else {
