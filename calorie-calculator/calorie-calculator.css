@@ -11,80 +11,7 @@ body {
     font-size: 20px;
 }
 
-.container {
-    max-width: 1000px;
-    height: auto;
-    margin: 100px auto;
-    padding: 30px;
-    background-color: #f4f4f4;
-    box-shadow: 0 0 50px rgba(231, 227, 227, 0.1);
-    visibility: hidden;
-}
-
-.result span {
-   
-}
-
-.container.visible {
-    visibility: visbile;
-}
-.horizontal-line {
-    width: 100%;
-    height: 2px;
-    background-color: black; 
-    border: none; 
-}
-.left-side span {
-}
-.left-side {
-    max-width: 350px;
-    padding-right: 30px; 
-}
-#serving_size{
-   margin-top: 20px;
-   margin-bottom: 20px;
-}
-#calories, #protein, #fats, #carbohydrates, #sodium, #sugar {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    
-}
-
-.right-side {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-.divider {
-    width: 0px;
-}
-
-.container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-family: Arial, sans-serif;
-}
-
-.result h2 { 
-    margin-top: 25px;
-    margin-bottom: 25px;
-    text-transform: capitalize;
-    text-align: center;
-}
-
-.result p {
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-.result span {
-    text-align: right;
-}
-/*left off here continue at food image*/
-
-#food-image img {
-    max-width: 00%;
-}
+/*EXTERIOR SECTION*/
 .exterior {
     text-align: center;
     margin-top: 20px;
@@ -100,50 +27,33 @@ body {
     border-radius: 10px;
 }
 #calorie-form {
-    display: center;
+    display:flex;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin: 20px auto 40px auto;
+    background-color: #ddd;
+    border: 2px solid black;
+    max-width: 40%;
+    width:100%;
+    border-radius: 10px;
 }
 
 #calorie-form input[type="text"] {
     padding: 10px;
-    flex: .5;
     border: 5px solid #ddd;
     border-radius: 20px;
     margin-right: 10px;
-    width: 300px;
+    width: 100%;
 }
 
 #calorie-form button {
-    padding: 10px 20px;
+    margin: 5px;
+    padding: 1px 20px;
     background-color: #318a96;
     color: white;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-}
-
-
-#add-form button {
-    margin-top: auto;
-    padding: 10px 20px;
-    background-color: #318a96;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    position: relative;
-    bottom: 0;
-    right: 0;
-}
-
-#add-form button:hover {
-    background-color: #218838;
-}
-
-#calorie-form button:hover {
-    background-color: #218838;
 }
 
 #calorie-summary img {
@@ -155,14 +65,130 @@ body {
     font-size: 18px;
     margin-top: -40px;
 }
-#serving_size {
 
-    display: none;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: black;
-    color: white;
-    width: auto;  
-    height: 40px;
-    padding: 5px;
+/*CONTAINER SECTION*/
+.container {
+    max-width: 1000px;
+    height: auto;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 50px rgba(231, 227, 227, 0.1);
+    visibility: hidden;
 }
+
+.container h1 { 
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.container.visible {
+    visibility: visbile;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 2px;
+    background-color: black; 
+    visibility: hidden;
+    border: none; 
+}
+
+.divider {
+    width: 0px;
+}
+
+/* LEFT SIDE OF CONTAINER */
+.left-side {
+    margin-top: 10px;
+    max-width: 400px;
+    border: 2px solid black;
+}
+
+.left-side h1 {
+    margin: 10px;
+    font-size: 53px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+}
+
+.left-side h2 {
+    font-size: 15px;
+    text-align: left;
+    font-weight: 800;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+#calories {
+    display: flex;
+    justify-content: space-between;
+    font-size: 53px;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 7px solid black;
+}
+
+#protein, #fats, #carbohydrates, #sodium, #sugar, #saturated-fat, #potassium, #serving_size, #cholesterol{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    font-weight: 700;
+}
+
+.label {
+    text-align: left;
+}
+
+.value {
+    text-align: right;
+}
+
+#serving_size {
+    color: black;
+    font-weight: 900;
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 25px;
+    border-bottom: 15px solid black;
+}
+
+/*#food-image img {
+    max-width: 00%;
+}*/
+
+/*RIGHT SIDE SECTION*/
+.right-side {
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+}
+
+#add-form button {
+    position: absolute;
+    bottom: 0; /*for future use, aligns to the bottom of the container */
+    right: 0; /* for future use, aligns to the right of the container */
+    padding: 10px 20px;
+    background-color: #318a96;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#add-form button:hover {
+    background-color: #218838;
+}
+
+
