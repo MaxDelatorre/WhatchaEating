@@ -51,13 +51,12 @@ window.addEventListener("load", function() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         if (data.foods && data.foods.length > 0) {
             const food = data.foods[0];
             const article = getArticle(food.food_name);
             
                 //document.getElementById('food-name').innerHTML = `<h2>${food.food_name}</h2>`;
-                document.getElementById('calories').innerHTML = `<span class="label">Calories:</span> <span class="value">${food.nf_calories} kcals</span>`;
+                document.getElementById('calories').innerHTML = `<span class="label">Calories:</span> <span class="value">${food.nf_calories}</span>`;
                 document.getElementById('protein').innerHTML = `<span class="label">Protein:</span> <span class="value">${food.nf_protein} g</span>`;
                 document.getElementById('fats').innerHTML = `<span class="label">Fats:</span> <span class="value">${food.nf_total_fat} g</span>`;
                 document.getElementById('saturated-fat').innerHTML = `<span class="label">Saturated Fat:</span> <span class="value">${food.nf_saturated_fat} g</span>`;
