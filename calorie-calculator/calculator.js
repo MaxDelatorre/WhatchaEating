@@ -39,6 +39,7 @@ window.addEventListener("load", function() {
     const summaryDiv = document.getElementById('calorie-summary');
     const foodImageDiv = document.getElementById('food-image');
     const container = document.querySelector('.container');
+    const burncaloriesDiv = document.getElementById('burn-calories');
 
     fetch(apiUrl, {
         method: 'POST',
@@ -68,7 +69,7 @@ window.addEventListener("load", function() {
                 document.getElementById('serving_size').innerHTML = `<span class="label">Serving Size:</span> <span class="value">${food.serving_weight_grams} g</span>`;
             
                 summaryDiv.innerHTML = `There are a total of ${food.nf_calories} calories in ${article} ${food.food_name}. <img src="${food.photo.highres}" alt="${food.food_name}">`;
-
+                burncaloriesDiv.innerHTML = `To burn ${food.nf_calories} calories, you will have to...`;
             // Call the function to show the container if content exists
                 showContainerIfContent();
             } else {

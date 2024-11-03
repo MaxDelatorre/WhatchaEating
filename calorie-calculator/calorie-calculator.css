@@ -125,7 +125,7 @@ body {
 #calories {
     display: flex;
     justify-content: space-between;
-    font-size: 43px;
+    font-size: 44px;
     font-weight: 700;
     margin-left: 10px;
     margin-right: 10px;
@@ -167,7 +167,7 @@ body {
 }*/
 
 /*RIGHT SIDE SECTION*/
-.right-side {
+/*.right-side {
     display: flex;
     position: relative;
     justify-content: flex-start;
@@ -177,8 +177,8 @@ body {
 
 #add-form button {
     position: absolute;
-    bottom: 0; /*for future use, aligns to the bottom of the container */
-    right: 0; /* for future use, aligns to the right of the container */
+    bottom: 0; 
+    right: 0; 
     padding: 10px 20px;
     background-color: #318a96;
     color: white;
@@ -190,5 +190,29 @@ body {
 #add-form button:hover {
     background-color: #218838;
 }
+*/
 
+.right-side {
+    margin-top: 10px;
+    border: 2px solid black;
+    width: 520px;
+    background-color: red;
 
+}
+#burn-calories {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 25px;
+}
+
+.runner img{
+    height: 90px;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.result {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
