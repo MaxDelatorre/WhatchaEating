@@ -90,5 +90,3 @@ window.addEventListener("load", function() {
     sessionStorage.removeItem("foodQuery");
     fetchFoodData(foodItem);
 });
-
-
