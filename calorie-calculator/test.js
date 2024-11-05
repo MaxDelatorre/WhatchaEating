@@ -1,23 +1,78 @@
+// Utility functions
 function getArticle(foodName) {
-    const firstLetter = foodName.charAt(0).toLowerCase();
-    return ['a', 'e', 'i', 'o', 'u'].includes(firstLetter) ? 'an' : 'a';
+    return /^[aeiou]/i.test(foodName) ? 'an' : 'a';
 }
+
 function showContainerIfContent() {
     const container = document.querySelector('.container');
     const resultDiv = document.getElementById('result');
-
-    // checks if resultDiv has content
-    if (resultDiv.innerHTML.trim() !== '') {
-        container.style.visibility = 'visible'; // if content container shows
-    } else {
-        container.style.visibility = 'hidden'; // if no content container hidden
-    }
+    container.style.visibility = resultDiv.innerHTML.trim() !== '' ? 'visible' : 'hidden';
 }
+
 function calculateJoggingMinutes(calories) {
-    const caloriesPerMinute = 13; // 13 calories burned per minute of jogging
-    return (calories / caloriesPerMinute).toFixed(2); // Returns the time in minutes, rounded to 2 decimal places
+    return (calories / 13).toFixed(2); // Assuming 13 calories burned per minute
 }
 
+// Function to update individual nutrient fields
+function updateField(id, label, value, unit = '') {
+    document.getElementById(id).innerHTML = `<span class="label">${label}:</span> <span class="value">${value} ${unit}</span>`;
+}
+
+function fetchFoodData(foodItem) {
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            const food = data.find(item => item.food_name.toLowerCase() === foodItem.toLowerCase());
+            if (food) {
+                displayFoodData(food);
+            } else {
+                handleNoData();
+            }
+        })
+        .catch(handleFetchError);
+}
+
+// Function to handle local JSON data
+function displayFoodData(food) {
+    const article = getArticle(food.food_name);
+    const joggingMinutes = calculateJoggingMinutes(food.nf_calories);
+    
+    // Update nutrition fields
+    updateField('serving_size', 'Serving Size', food.serving_weight_grams, 'g');
+    updateField('calories', 'Calories', food.nf_calories);
+    updateField('protein', 'Protein', food.nf_protein, 'g');
+    updateField('fats', 'Fats', food.nf_total_fat, 'g');
+    updateField('saturated-fat', 'Saturated Fat', food.nf_saturated_fat, 'g');
+    updateField('carbohydrates', 'Carbohydrates', food.nf_total_carbohydrate, 'g');
+    updateField('sodium', 'Sodium', food.nf_sodium, 'mg');
+    updateField('sugar', 'Sugar', food.nf_sugars, 'g');
+    updateField('cholesterol', 'Cholesterol', food.nf_cholesterol, 'mg');
+    updateField('potassium', 'Potassium', food.nf_potassium, 'mg');
+
+    // Update summary and jogging time
+    document.getElementById('calorie-summary').innerHTML = `There are a total of ${food.nf_calories} calories in ${article} ${food.food_name}. <img src="${food.photo.highres}" alt="${food.food_name}">`;
+    document.getElementById('burn-calories').innerHTML = `To burn ${food.nf_calories} calories you will have to...`;
+    document.getElementById('jogging-time').innerHTML = `Jog for approximately ${joggingMinutes} minutes.`;
+
+    showContainerIfContent();
+}
+
+function handleNoData() {
+    document.getElementById('result').innerHTML = '<p>No data found for that food item. Try checking your spelling.</p>';
+    document.getElementById('calorie-summary').innerHTML = '';
+    showContainerIfContent();
+}
+
+function handleFetchError(error) {
+    console.error('Error fetching data:', error);
+    document.getElementById('result').innerHTML = '<p>There was an error retrieving the data.</p>';
+    document.getElementById('calorie-summary').innerHTML = '';
+    showContainerIfContent();
+}
+
+// Fetch food data from the local JSON file
+
+// Handle form submission
 document.getElementById('calorie-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const foodItem = document.getElementById('food').value.trim();
@@ -25,58 +80,15 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
     location.reload();
 });
 
+// Load data on page load if it exists in session storage
 window.addEventListener("load", function() {
     const foodItem = sessionStorage.getItem("foodQuery");
-    if (!foodItem) return; // No action if no food item is present
+    if (!foodItem) return;
     sessionStorage.removeItem("foodQuery");
-
-
-    const resultDiv = document.getElementById('result');
-    const summaryDiv = document.getElementById('calorie-summary');
-    const foodImageDiv = document.getElementById('food-image');
-    const container = document.querySelector('.container');
-    const joggingTimeDiv = document.getElementById('jogging-time');
-    const burncaloriesDiv = document.getElementById('burn-calories');
-
-    fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            const food = data.find(item => item.food_name.toLowerCase() === foodItem);
-            if (food) {
-                const article = getArticle(food.food_name);
-                const joggingMinutes = calculateJoggingMinutes(food.nf_calories);
-                
-                //document.getElementById('food-name').innerHTML = `<h2>${food.food_name}</h2>`;
-                document.getElementById('calories').innerHTML = `<span class="label">Calories:</span> <span class="value">${food.nf_calories}</span>`;
-                document.getElementById('protein').innerHTML = `<span class="label">Protein:</span> <span class="value">${food.nf_protein} g</span>`;
-                document.getElementById('fats').innerHTML = `<span class="label">Fats:</span> <span class="value">${food.nf_total_fat} g</span>`;
-                document.getElementById('saturated-fat').innerHTML = `<span class="label">Saturated Fat:</span> <span class="value">${food.nf_saturated_fat} g</span>`;
-                document.getElementById('carbohydrates').innerHTML = `<span class="label">Carbohydrates:</span> <span class="value">${food.nf_total_carbohydrate} g</span>`;
-                document.getElementById('sodium').innerHTML = `<span class="label">Sodium:</span> <span class="value">${food.nf_sodium} mg</span>`;
-                document.getElementById('sugar').innerHTML = `<span class="label">Sugar:</span> <span class="value">${food.nf_sugars} g</span>`;
-                document.getElementById('cholesterol').innerHTML = `<span class="label">Cholesterol:</span> <span class="value">${food.nf_cholesterol} g</span>`;
-                document.getElementById('potassium').innerHTML = `<span class="label">Potassium:</span> <span class="value">${food.nf_potassium} g</span>`;
-                document.getElementById('serving_size').innerHTML = `<span class="label">Serving Size:</span> <span class="value">${food.serving_weight_grams} g</span>`;
-                
-               
-                
-                
-                summaryDiv.innerHTML = `There are a total of ${food.nf_calories} calories in ${article} ${food.food_name}. <img src="${food.photo.highres}" alt="${food.food_name}">`;
-                burncaloriesDiv.innerHTML = `To burn ${food.nf_calories} calories you will have to...`;
-                joggingTimeDiv.innerHTML = `jog for approximately ${joggingMinutes} minutes.`;
-                // Call the function to show the container if content exists
-                showContainerIfContent();
-            } else {
-                resultDiv.innerHTML = '<p>No data found for that food item. Try checking your spelling.</p>';
-                foodImageDiv.innerHTML = '';
-                summaryDiv.innerHTML = '';
-                showContainerIfContent(); // Call to ensure container is hidden
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        resultDiv.innerHTML = '<p>There was an error retrieving the data.</p>';
-        summaryDiv.innerHTML = '';
-        showContainerIfContent();
-        });
+    fetchFoodData(foodItem);
 });
+
+// Display error message if no data found
+
+// Display error message if fetch fails
+
