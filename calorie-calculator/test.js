@@ -200,29 +200,7 @@ document.getElementById('add-form').addEventListener('submit', function(e) {
     addFoodToTracking();
 });
 
-//AREA TO TRACK FOODS
-
-// Utility function to save tracked foods to localStorage
-
-// Utility function to load tracked foods from localStorage
-
-// Function to show the tracking container if it has items
-
-// Function to add the currently displayed food to the tracking container
-function addFoodToTracking() {
-    if (currentFood) {
-        trackedFoods.push(currentFood); // Add to tracked list
-        updateTrackingContainer(); // Update displayed list
-        saveTrackedFoods(); // Save updated list to localStorage
-        showTrackingContainer(); // Make sure container is visible
-    } else {
-        console.log("No food item to add");
-    }
-}
-
-// Function to update the tracking container with tracked foods
-
-// Event listener for the Add Food button
+//TESTING AREA CAN DELETE AFTER IF THINGS GO SOUTH
 
 
 
