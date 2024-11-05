@@ -221,4 +221,17 @@ body {
     text-align: center;
 }
 
+#chartContainer {
+    width: 100%; /* Adjusts to fill the container width */
+    height: 400px; /* Set to the desired height */
+    margin-top: 20px; /* Space from elements above */
+    
+}
+
+#nutrientChart {
+    display: block;
+    max-width: 100%; /* Ensures it doesn't exceed container's width */
+    height: 400px;
+}
+
 

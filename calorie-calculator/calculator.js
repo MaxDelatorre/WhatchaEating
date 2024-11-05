@@ -41,6 +41,42 @@ function fetchFoodData(foodItem) {
     })
     .catch(handleFetchError);
 }
+//creates the chart using the information from the api
+function renderNutrientChart(data) {
+    const ctx = document.getElementById('nutrientChart').getContext('2d');
+    const labels = [
+        'Protein', 'Fats', 'Carbohydrates', 'Sodium', 'Sugar', 
+        'Cholesterol', 'Saturated Fat'
+    ];
+    const values = [
+        data.nf_protein, data.nf_total_fat, data.nf_total_carbohydrate,
+        data.nf_sodium, data.nf_sugars, data.nf_cholesterol,
+        data.nf_saturated_fat
+    ];
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Nutritional Values',
+                data: values,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: false, // Allow for manual height control
+        responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
 //populates fields with the information from the fetch requests
 function displayFoodData(food) {
     const article = getArticle(food.food_name);
@@ -61,6 +97,7 @@ function displayFoodData(food) {
     document.getElementById('burn-calories').innerHTML = `To burn ${food.nf_calories} calories you will have to...`;
     document.getElementById('jogging-time').innerHTML = `Jog for approximately ${joggingMinutes} minutes.`;
 
+    renderNutrientChart(food);
     showContainerIfContent();
 }
 //displays a message if no data is found, whether the food
