@@ -12,6 +12,7 @@
         <img src="../images/logo.png">
     </div>
     <div class="exterior">
+        <button type="button" id="reset-button">Reset</button>
         <form id="calorie-form">
             <input type="text" id="food" placeholder="search for calories in your food..." required>
             <button type="submit">Get Calories</button>
@@ -85,7 +86,13 @@
             </div>
         </div>
     </div>
+    <div id="tracking-container" class="tracking-container" style="display: none;">
+        <h2>Tracked Foods</h2>
+        <div id="tracked-food-list"></div>
+    </div>
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="calculator.js"></script>
+    <script src="test.js"></script>
 </body>
 </html>

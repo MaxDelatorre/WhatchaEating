@@ -1,3 +1,6 @@
+//empty arrays to hold information
+let trackedFoods = [];
+let currentFood = null;
 //handles the choice of using 'a' or 'an' depending on the first letter of the food name
 function getArticle(foodName) {
     return /^[aeiou]/i.test(foodName) ? 'an' : 'a';
@@ -66,10 +69,65 @@ function renderNutrientChart(data) {
         }
     });
 }
+//function to add currently displayed food item into tracking container
+function updateTrackingContainer() {
+    const foodList = document.getElementById('tracked-food-list');
+    foodList.innerHTML = ''; // Clear previous entries
+
+    // Loop through tracked foods and display each one
+    trackedFoods.forEach((food, index) => {
+        const foodItem = document.createElement('div');
+        foodItem.classList.add('tracked-food-item');
+        foodItem.innerHTML = `
+            <h3>${index + 1}. ${food.food_name}</h3>
+            <p>Calories: ${food.nf_calories} kcal</p>
+            <p>Protein: ${food.nf_protein} g</p>
+            <p>Fats: ${food.nf_total_fat} g</p>
+            <p>Carbohydrates: ${food.nf_total_carbohydrate} g</p>
+            <p>Sodium: ${food.nf_sodium} mg</p>
+            <p>Sugar: ${food.nf_sugars} g</p>
+            <p>Cholesterol: ${food.nf_cholesterol} mg</p>
+            <p>Saturated Fat: ${food.nf_saturated_fat} g</p>
+            <p>Potassium: ${food.nf_potassium} mg</p>
+        `;
+        foodList.appendChild(foodItem);
+    });
+}
+//locally saves tracked foods to local storage so it isn't deleted upon reload/refresh
+function saveTrackedFoods() {
+    localStorage.setItem('trackedFoods', JSON.stringify(trackedFoods));
+}
+//once saved, if reloaded, will display saved items back into the container
+function loadTrackedFoods() {
+    const savedFoods = localStorage.getItem('trackedFoods');
+    if (savedFoods) {
+        trackedFoods = JSON.parse(savedFoods);
+        updateTrackingContainer(); // Render tracked foods
+        showTrackingContainer(); // Show the container if it has items
+    }
+}
+//if populated, tracked food container shows
+function showTrackingContainer() {
+    const trackingContainer = document.getElementById('tracking-container');
+    trackingContainer.style.display = trackedFoods.length > 0 ? 'block' : 'none';
+}
+//adds desired food item into empty array to then be displayed
+function addFoodToTracking() {
+    if (currentFood) {
+        trackedFoods.push(currentFood); // Add to tracked list
+        updateTrackingContainer(); // Update displayed list
+        saveTrackedFoods(); // Save updated list to localStorage
+        showTrackingContainer(); // Make sure container is visible
+    } else {
+        console.log("No food item to add");
+    }
+}
 //populates fields with the information from the fetch requests
 function displayFoodData(food) {
     const article = getArticle(food.food_name);
     const joggingMinutes = calculateJoggingMinutes(food.nf_calories);
+    /* food tracker piece*/ 
+    currentFood = food;
     
     updateField('serving_size', 'Serving Size', food.serving_weight_grams, 'g');
     updateField('calories', 'Calories', food.nf_calories);
@@ -111,8 +169,60 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
 });
 //clears the storage after it was used.
 window.addEventListener("load", function() {
+    loadTrackedFoods();
     const foodItem = sessionStorage.getItem("foodQuery");
     if (!foodItem) return;
     sessionStorage.removeItem("foodQuery");
     fetchFoodData(foodItem);
 });
+//logic for reset button, when clicked clears local storage allowing full reset
+document.getElementById('reset-button').addEventListener('click', function() {
+    // Clear localStorage and reset the tracking data
+    localStorage.clear();
+    trackedFoods = [];
+    updateTrackingContainer(); // Clear displayed tracked items
+    showTrackingContainer(); // Hide the tracking container
+
+    // Clear input field and reset display elements
+    document.getElementById('food').value = '';
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('calorie-summary').innerHTML = '';
+    document.getElementById('burn-calories').innerHTML = '';
+    document.getElementById('jogging-time').innerHTML = '';
+    
+    // Hide the main container if necessary
+    showContainerIfContent();
+    console.log("All data cleared.");
+});
+//logic for add button
+document.getElementById('add-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    addFoodToTracking();
+});
+
+//AREA TO TRACK FOODS
+
+// Utility function to save tracked foods to localStorage
+
+// Utility function to load tracked foods from localStorage
+
+// Function to show the tracking container if it has items
+
+// Function to add the currently displayed food to the tracking container
+function addFoodToTracking() {
+    if (currentFood) {
+        trackedFoods.push(currentFood); // Add to tracked list
+        updateTrackingContainer(); // Update displayed list
+        saveTrackedFoods(); // Save updated list to localStorage
+        showTrackingContainer(); // Make sure container is visible
+    } else {
+        console.log("No food item to add");
+    }
+}
+
+// Function to update the tracking container with tracked foods
+
+// Event listener for the Add Food button
+
+
+
