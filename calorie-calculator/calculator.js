@@ -67,7 +67,7 @@ function renderNutrientChart(data) {
             }]
         },
         options: {
-            maintainAspectRatio: false, // Allow for manual height control
+            maintainAspectRatio: false,
         responsive: true,
             scales: {
                 y: {
