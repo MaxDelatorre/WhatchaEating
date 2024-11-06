@@ -5,6 +5,10 @@ let currentFood = null;
 function getArticle(foodName) {
     return /^[aeiou]/i.test(foodName) ? 'an' : 'a';
 }
+//function to capitalize any word
+function capitalizeFirstLetter(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
 //if no input, page is blank else input, calculator is displayed
 function showContainerIfContent() {
     const container = document.querySelector('.container');
@@ -79,7 +83,7 @@ function updateTrackingContainer() {
         const foodItem = document.createElement('div');
         foodItem.classList.add('tracked-food-item');
         foodItem.innerHTML = `
-            <h3>${index + 1}. ${food.food_name}</h3>
+            <h3>${index + 1}. ${capitalizeFirstLetter(food.food_name)}</h3>
             <p>Calories: ${food.nf_calories} kcal</p>
             <p>Protein: ${food.nf_protein} g</p>
             <p>Fats: ${food.nf_total_fat} g</p>
@@ -104,6 +108,7 @@ function loadTrackedFoods() {
         trackedFoods = JSON.parse(savedFoods);
         updateTrackingContainer(); // Render tracked foods
         showTrackingContainer(); // Show the container if it has items
+        updateFoodDropdown(); 
     }
 }
 //if populated, tracked food container shows
@@ -122,6 +127,17 @@ function addFoodToTracking() {
         console.log("No food item to add");
     }
 }
+//removes desired food item from the array.
+/*function removeFoodToTracking() {
+    if (currentFood) {
+        trackedFoods.pop(currentFood); // Add to tracked list
+        updateTrackingContainer(); // Update displayed list
+        saveTrackedFoods(); // Save updated list to localStorage
+        showTrackingContainer(); // Make sure container is visible
+    } else {
+        console.log("No food item to remove");
+    }
+}*/
 //populates fields with the information from the fetch requests
 function displayFoodData(food) {
     const article = getArticle(food.food_name);
@@ -181,7 +197,8 @@ document.getElementById('reset-button').addEventListener('click', function() {
     localStorage.clear();
     trackedFoods = [];
     updateTrackingContainer(); // Clear displayed tracked items
-    showTrackingContainer(); // Hide the tracking container
+    showTrackingContainer();
+    updateFoodDropdown(); // Hide the tracking container
 
     // Clear input field and reset display elements
     document.getElementById('food').value = '';
@@ -199,8 +216,55 @@ document.getElementById('add-form').addEventListener('submit', function(e) {
     e.preventDefault();
     addFoodToTracking();
 });
+/*logic for remove button
+document.getElementById('remove-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    removeFoodToTracking();
+});*/
 
 //TESTING AREA CAN DELETE AFTER IF THINGS GO SOUTH
 
+// Assume `trackedFoods` is your array storing the tracked food items
+
+// Function to update the dropdown list with current items in trackedFoods
+function updateFoodDropdown() {
+    const foodSelect = document.getElementById('food-select');
+    foodSelect.innerHTML = '<option value="">Select food to remove</option>'; // Clear previous options
+
+    trackedFoods.forEach((food, index) => {
+        const option = document.createElement('option');
+        option.value = index; // Use index as value to identify the item
+        option.textContent = food.food_name; // Display food name
+        foodSelect.appendChild(option);
+    });
+}
+
+// Function to remove selected food from the trackedFoods array
+document.getElementById('remove-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const foodSelect = document.getElementById('food-select');
+    const selectedIndex = foodSelect.value;
+
+    if (selectedIndex !== "") {
+        trackedFoods.splice(selectedIndex, 1); // Remove item from array
+        updateTrackingContainer(); // Update the display list
+        updateFoodDropdown(); // Refresh the dropdown options
+    } else {
+        alert("Please select a food item to remove.");
+    }
+});
+
+// Update dropdown whenever a new item is added to trackedFoods
+function addFoodToTracking() {
+    if (currentFood) {
+        trackedFoods.push(currentFood);
+        updateTrackingContainer();
+        saveTrackedFoods();
+        showTrackingContainer();
+        updateFoodDropdown(); // Refresh dropdown with new item
+    } else {
+        console.log("No food item to add");
+    }
+}
 
 
