@@ -120,6 +120,7 @@ function loadTrackedFoods() {
         updateTrackingContainer(); // Render tracked foods
         showTrackingContainer(); // Show the container if it has items
         updateFoodDropdown();
+        updateSummary();
     }
 }
 //if populated, tracked food container shows
@@ -135,6 +136,8 @@ function addFoodToTracking() {
         saveTrackedFoods(); // Save updated list to localStorage
         showTrackingContainer(); // Make sure container is visible
         updateFoodDropdown();
+        updateSummary();
+        toggleSummaryContainer();
     } else {
         console.log("No food item to add");
     }
@@ -147,7 +150,7 @@ function updateFoodDropdown() {
     trackedFoods.forEach((food, index) => {
         const option = document.createElement('option');
         option.value = index; // Use index as value to identify the item
-        option.textContent = food.food_name; // Display food name
+        option.textContent = capitalizeFirstLetter(food.food_name); // Display food name
         foodSelect.appendChild(option);
     });
 }
@@ -199,6 +202,7 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
 //clears the storage after it was used.
 window.addEventListener("load", function() {
     loadTrackedFoods();
+    updateSummary();
     const foodItem = sessionStorage.getItem("foodQuery");
     if (!foodItem) return;
     sessionStorage.removeItem("foodQuery");
@@ -206,12 +210,14 @@ window.addEventListener("load", function() {
 });
 //logic for reset button, when clicked clears local storage allowing full reset
 document.getElementById('reset-button').addEventListener('click', function() {
-    // Clear localStorage and reset the tracking data
+    location.reload()
     localStorage.clear();
     trackedFoods = [];
     updateTrackingContainer(); // Clear displayed tracked items
     showTrackingContainer(); // Hide the tracking container
     updateFoodDropdown();
+    clearSummary();
+    toggleSummaryContainer();
 
     // Clear input field and reset display elements
     document.getElementById('food').value = '';
@@ -219,8 +225,9 @@ document.getElementById('reset-button').addEventListener('click', function() {
     document.getElementById('calorie-summary').innerHTML = '';
     document.getElementById('burn-calories').innerHTML = '';
     document.getElementById('jogging-time').innerHTML = '';
+
+    saveTrackedFoods();
     
-    // Hide the main container if necessary
     showContainerIfContent();
     console.log("All data cleared.");
 });
@@ -239,6 +246,8 @@ document.getElementById('remove-form').addEventListener('submit', function(e) {
         trackedFoods.splice(selectedIndex, 1); // Remove item from array
         updateTrackingContainer(); // Update the display list
         updateFoodDropdown(); // Refresh the dropdown options
+        updateSummary();
+        toggleSummaryContainer();
     } else {
         alert("Please select a food item to remove.");
     }
@@ -246,3 +255,41 @@ document.getElementById('remove-form').addEventListener('submit', function(e) {
 
 
 //TESTING AREA CAN DELETE AFTER IF THINGS GO SOUTH
+
+function updateSummary() {
+    // Initialize total values
+    let totalCalories = 0;
+    let totalProtein = 0;
+    let totalFats = 0;
+    let totalCarbohydrates = 0;
+    let totalSodium = 0;
+
+    // Loop through tracked foods and sum up values
+    trackedFoods.forEach(food => {
+        totalCalories += food.nf_calories;
+        totalProtein += food.nf_protein;
+        totalFats += food.nf_total_fat;
+        totalCarbohydrates += food.nf_total_carbohydrate;
+        totalSodium += food.nf_sodium;
+    });
+    document.getElementById('total-calories').textContent = `Total Calories: ${totalCalories.toFixed(2)}`;
+    document.getElementById('total-protein').textContent = `Total Protein: ${totalProtein.toFixed(2)} g`;
+    document.getElementById('total-fats').textContent = `Total Fats: ${totalFats.toFixed(2)} g`;
+    document.getElementById('total-carbohydrates').textContent = `Total Carbohydrates: ${totalCarbohydrates.toFixed(2)} g`;
+    document.getElementById('total-sodium').textContent = `Total Sodium: ${totalSodium.toFixed(2)} mg`;
+    
+}
+
+
+function clearSummary() {
+    document.getElementById('total-calories').textContent = 'Total Calories: 0';
+    document.getElementById('total-protein').textContent = 'Total Protein: 0 g';
+    document.getElementById('total-fats').textContent = 'Total Fats: 0 g';
+    document.getElementById('total-carbohydrates').textContent = 'Total Carbohydrates: 0 g';
+    document.getElementById('total-sodium').textContent = 'Total Sodium: 0 mg';
+}
+
+function toggleSummaryContainer() {
+    const summaryContainer = document.getElementById('summary-container');
+    summaryContainer.style.display = trackedFoods.length > 0 ? 'block' : 'none';
+}

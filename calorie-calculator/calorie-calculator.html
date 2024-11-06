@@ -12,7 +12,9 @@
         <img src="../images/logo.png">
     </div>
     <div class="exterior">
+        <form id="reset">
         <button type="button" id="reset-button">Reset</button>
+        </form>
         <form id="calorie-form">
             <input type="text" id="food" placeholder="search for calories in your food..." required>
             <button type="submit">Get Calories</button>
@@ -90,6 +92,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="summary-container">
+        <h2>Tracked Foods Summary</h2>
+    <div id="nutrient-total" class="hidden">
+        <span id="total-calories">Calories: 0</span> | 
+        <span id="total-protein">Protein: 0 g</span> | 
+        <span id="total-fats">Fats: 0 g</span> | 
+        <span id="total-carbohydrates">Carbohydrates: 0 g</span> | 
+        <span id="total-sodium">Sodium: 0 mg</span>
+    </div>
     </div>
     <div id="tracking-container" class="tracking-container" style="display: none;">
         <h2>Tracked Foods</h2>
