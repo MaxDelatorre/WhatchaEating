@@ -20,10 +20,11 @@ app.use(express.static(path.join(__dirname, '../')));
 
 // Handle user sign-up
 app.post('/signup', async (req, res) => {
-    const { User: username, psw: password } = req.body; // Get username and password from form data
+    const { user: username, psw: password } = req.body; // Get username and password from form data
 
     if (!username || !password) {
-        return res.status(400).send('Username and password are required.');
+        res.status(400).send('Username and password are required.');
+        return //res.redirect('../login-signup/signup.html');
     }
 
     // Add user to the database
@@ -51,7 +52,8 @@ app.post('/login', async (req, res) => {
     const { User: username, psw: password } = req.body; // Get username and password from form data
 
     if (!username || !password) {
-        return res.status(400).send('Username and password are required.');
+        res.status(400).send('Username and password are required.');
+        return //res.redirect('../login-signup/login.html');
     }
 
     // Validate user credentials
