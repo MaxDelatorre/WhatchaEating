@@ -7,6 +7,7 @@ const path = require('path'); // Import path for resolving file paths
 const userDB = require('./user_db'); // Import user_db.js
 
 const app = express();
+const router =  express.Router();
 const PORT = 3100;
 
 // Middleware
@@ -20,10 +21,11 @@ app.use(express.static(path.join(__dirname, '../')));
 
 // Handle user sign-up
 app.post('/signup', async (req, res) => {
-    const { User: username, psw: password } = req.body; // Get username and password from form data
+    const { user: username, psw: password } = req.body; // Get username and password from form data
 
     if (!username || !password) {
-        return res.status(400).send('Username and password are required.');
+        res.status(400).send('Username and password are required.');
+        return //res.redirect('../login-signup/signup.html');
     }
 
     // Add user to the database
@@ -51,7 +53,8 @@ app.post('/login', async (req, res) => {
     const { User: username, psw: password } = req.body; // Get username and password from form data
 
     if (!username || !password) {
-        return res.status(400).send('Username and password are required.');
+        res.status(400).send('Username and password are required.');
+        return //res.redirect('../login-signup/login.html');
     }
 
     // Validate user credentials
