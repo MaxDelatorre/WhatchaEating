@@ -7,6 +7,7 @@ const path = require('path'); // Import path for resolving file paths
 const userDB = require('./user_db'); // Import user_db.js
 
 const app = express();
+const router =  express.Router();
 const PORT = 3100;
 
 // Middleware

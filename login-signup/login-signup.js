@@ -14,6 +14,8 @@ showPasswordCheckbox.addEventListener("change", function () {
   }
 });
 
+
+
 //Password validation and user signup
 document.querySelector("#signupForm").addEventListener("submit", function (event) {
   const password = passwordInput.value;
