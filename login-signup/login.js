@@ -1,9 +1,11 @@
-console.log('signup.js is loaded');
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyD-e8SkDbxXwoc2LAPIDoU98ILFsBXlFh0",
   authDomain: "whatchaeating-a0fff.firebaseapp.com",
@@ -11,24 +13,25 @@ const firebaseConfig = {
   storageBucket: "whatchaeating-a0fff.firebasestorage.app",
   messagingSenderId: "998941433300",
   appId: "1:998941433300:web:4fade7c81c7702bf1d4a41",
+  //measurementId: "G-786VYKP65J"
 };
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get the Auth instance
 const auth = getAuth(app);
 
-const signupForm = document.getElementById('signupForm');
+const loginForm = document.getElementById('loginForm');
 
-signupForm.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent form from submitting the traditional way
-  //console.log("Form Submission triggered");
-  //alert("Form Submission triggered");
+loginForm.addEventListener("submit", function (event) {
+  event.preventDefault(); 
+
   const email = document.getElementById('user').value;
   const password = document.getElementById('psw').value;
 
   // Create the user with email and password
-  createUserWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       //alert("Account created successfully!");
@@ -41,7 +44,3 @@ signupForm.addEventListener("submit", function (event) {
       alert(errorMessage); // Show error message to the user
     });
 });
-
-
-
-

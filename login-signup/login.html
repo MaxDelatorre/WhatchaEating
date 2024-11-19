@@ -11,11 +11,12 @@
 <body>
     <div class="form-background">
         <div class="form-popup">
-            <form class="form-container" id="loginForm" method="POST"  action="/login">
-                <h2>Login</h2>
+            <h1>Login</h1>
+            <form class="form-container" id="loginForm"> 
+                
 
                 <label for="user"><b>User Name</b></label>
-                <input type="text" id="user" placeholder="Enter User Name" name="User" required />
+                <input type="email" id="user" placeholder="Enter User Name" name="User" required />
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" id="psw" placeholder="Enter Password" name="psw" required />
@@ -34,7 +35,7 @@
         </div>
     </div>
     <script src="login-signup.js"></script>
-    <script type = "module" src="signup.js" defer></script>
+    <script type = "module" src="login.js" defer></script>
 </body>
 
 </html>
