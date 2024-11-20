@@ -6,8 +6,8 @@ const showPasswordCheckbox = document.querySelector("#showPassword");
 //Passowrd toggle
 showPasswordCheckbox.addEventListener("change", function () {
   if (passwordInput.getAttribute("type") === "password") {
-    passwordInput.setAttribute("type", "text");
-    repeatPasswordInput.setAttribute("type", "text");
+    passwordInput.setAttribute("type", "email");
+    repeatPasswordInput.setAttribute("type", "email");
   } else {
     passwordInput.setAttribute("type", "password");
     repeatPasswordInput.setAttribute("type", "password");
