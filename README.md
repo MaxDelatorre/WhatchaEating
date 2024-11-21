@@ -4,18 +4,18 @@ Whatcha Eating is a user-friendly webapp that helps individuals calculate their 
 
 # Features
 
-Calorie Requirement Calculator: Calculates daily calories using the Calorie Calculator
-Food Logging: Allows users to log meals and snacks, displaying caloric intake.
+- Calorie Requirement Calculator: Calculates daily calories using the Calorie Calculator
+- Food Logging: Allows users to log meals and snacks, displaying caloric intake.
 
 # Technologies Used
 
-Frontend: HTML and CSS
-Backend: JavaScript
-Database: Firebase
-API: Integration with food databases like USDA.
-Hosting: Github
-Github link: https://github.com/MaxDelatorre/WhatchaEating.git
-Link to website: https://maxdelatorre.github.io/WhatchaEating/
+- Frontend: HTML and CSS
+- Backend: JavaScript
+- Database: Firebase
+- API: Integration with food databases like USDA.
+- Hosting: Github
+- Github link: https://github.com/MaxDelatorre/WhatchaEating.git
+- Link to website: https://maxdelatorre.github.io/WhatchaEating/
 
 # How to Use
 
@@ -31,6 +31,6 @@ Link to website: https://maxdelatorre.github.io/WhatchaEating/
 
 # Developers
 
-Maximiliano Delatorre 
-Nathan Hendratno
-Joshua Barajas
+- Maximiliano Delatorre 
+- Nathan Hendratno
+- Joshua Barajas
