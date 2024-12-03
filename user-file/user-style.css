@@ -128,6 +128,11 @@ nav .fa {
         padding: 30px;
     }
 }
+#username {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
 
 .calorie {
     padding: 50px; /* Add padding around the section */
