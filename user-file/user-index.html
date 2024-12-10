@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>Whatcha Eating? - Free Calorie Tracker!</title>
+    <link rel="stylesheet" href="user-style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="user-index.html"><img src="../images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="../about.html">ABOUT</a></li>
+                    <li><a href="">HOW TO USE</a></li>
+                    <li><a href="../calorie-calculator/calorie-calculator.html">CALORIE CALCULATOR</a></li>
+                    <li><a href="../index.html">SIGN OUT</a></li>
+                    <li class="dropdown">
+                        <a class="dropbtn" id="username">NAME
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="">History</a>
+                            <a href="">Favorites</a>
+                            <a href="javascript:void(0);" onclick="deleteAccount()">Delete Account</a>
+                        </div>
+                    </li>
+                    <!---<li><a href="" id="username">USER NAME</a></li>-->
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <div class="text-box">
+            <h1>Whatcha Eating?</h1>
+            <h2>Free Calorie Tracker!</h2>
+            <p>Tracking your calories is now as easy as clicking a button! Living a healthy lifestyle has never been easier!</p>
+            <a href="../calorie-calculator/calorie-calculator.html" class="hero-btn">CALORIE CALCULATOR</a>
+        </div>
+
+        <!-------------Including JS------->
+        <script type="module" src="user-index.js" defer></script>
+    </section>
+</body>
+</html>
+
