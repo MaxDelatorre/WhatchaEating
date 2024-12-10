@@ -47,6 +47,57 @@ nav img {
 .nav-links ul li:hover::after {
     width: 100%;
 }
+
+#username {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* Adjust the dropdown */
+.dropdown {
+    position: relative; /* Ensure dropdown content is positioned relative to its container */
+}
+
+.dropdown .dropbtn {
+    font-size: 13px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 8px 12px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Drop below the button */
+    left: 0;
+    background-color: transparent; /* Match header background */
+    min-width: 150px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    display: block;
+    text-align: left;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f44336; /* Highlight on hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
+}
+
+
 .text-box {
     width: 90%;
     color: #fff;
@@ -128,11 +179,7 @@ nav .fa {
         padding: 30px;
     }
 }
-#username {
-    color: #fff;
-    text-decoration: none;
-    font-size: 15px;
-}
+
 
 .calorie {
     padding: 50px; /* Add padding around the section */
