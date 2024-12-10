@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calorie Calculator</title>
+    <link rel="stylesheet" href="calorie-calculator.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="../images/logo.png">
+    </div>
+    <div class="exterior">
+        <form id="reset">
+        <button type="button" id="reset-button">Reset</button>
+        </form>
+        <form id="calorie-form">
+            <input type="text" id="food" placeholder="search for calories in your food..." required>
+            <button type="submit">Get Calories</button>
+        </form>
+        <div id="calorie-summary">
+
+        </div>
+    </div> 
+    <div class="container">
+        <h1>Calorie Calculator</h1>
+        <hr class="horizontal-line">
+        <div id="result" class="result">
+            <div class="left-side">
+                <h1>Nutrition Facts</h1>
+                <div id="serving_size">
+                    <span class="label">Serving Size:</span>
+                    <span class="value"></span>
+                </div>
+                <h2>Amount per serving</h2>
+                <div id="calories">
+                    <span class="label">Calories:</span>
+                    <span class="value"></span>
+                </div>
+                <div id="protein">
+                    <span class="label">Protein:</span>
+                    <span class="value"></span>
+                </div>
+                <div id="fats">
+                    <span class="label">Fats:</span>
+                    <span class="value"></span>
+                </div>
+                <div id="carbohydrates">
+                    <span class="label">Carbohydrates:</span>
+                    <span class="value"></span>
+                </div>
+                <div id="sodium">
+                    <span class="label">Sodium:</span>
+                    <span class="value"></span>
+                </div>
+                <div id="sugar">
+                    <span class="label">Sugar:</span>
+                    <span class="value"></span>
+                </div>
+                <div id="cholesterol">
+                    <span class="label">Cholesterol:</span>
+                    <span class="value"></span>
+                </div>
+                <div id="saturated-fat">
+                    <span class="label">Saturated Fat:</span>
+                    <span class="value"></span>
+                </div>
+                <div id="potassium">
+                    <span class="label">Potassium:</span>
+                    <span class="value"></span>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="right-side">
+                <div id="burn-calories"></div>
+                <form id="remove-form">
+                    <select id="food-select">
+                        <option value="">Select food to remove</option>
+                    </select>
+                    <button type="submit">Remove Food</button>
+                </form>
+                <form id="add-form">
+                    <button type="submit">Add Food</button>
+                </form> 
+                <div class="runner">
+                    <img src="images/runner.gif">
+                    <div id="jogging-time"></div>
+                </div>
+                <div id="chartContainer">
+                    <canvas id="nutrientChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="summary-container">
+        <h2>Tracked Foods Summary</h2>
+    <div id="nutrient-total" class="hidden">
+        <span id="total-calories">Calories: 0</span> | 
+        <span id="total-protein">Protein: 0 g</span> | 
+        <span id="total-fats">Fats: 0 g</span> | 
+        <span id="total-carbohydrates">Carbohydrates: 0 g</span> | 
+        <span id="total-sodium">Sodium: 0 mg</span>
+    </div>
+    </div>
+    <div id="tracking-container" class="tracking-container" style="display: none;">
+        <h2>Tracked Foods</h2>
+        <div id="tracked-food-list"></div>
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="calculator.js"></script>
+</body>
+</html>

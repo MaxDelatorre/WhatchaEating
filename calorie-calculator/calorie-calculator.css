@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: rgba(203, 226, 222, 0.822);
+    color: #000000;
+    font-size: 20px;
+}
+
+/*EXTERIOR SECTION*/
+.exterior {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: -80px;
+}
+.logo {
+    text-align: center;
+    margin-top: 15px;
+}
+.logo img {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+}
+#calorie-form {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 40px auto;
+    background-color: #ddd;
+    border: 2px solid black;
+    max-width: 40%;
+    width:100%;
+    border-radius: 10px;
+}
+
+#calorie-form input[type="text"] {
+    padding: 10px;
+    border: 5px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+    width: 100%;
+}
+#reset-button {
+    padding: 1px 20px;
+    border: 1px solid black;
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;  
+}
+
+#calorie-form button {
+    margin: 5px;
+    padding: 1px 20px;
+    background-color: #318a96;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#reset button:hover {
+    background-color: red;
+}
+#calorie-form button:hover {
+    background-color: #218838;
+}
+
+#calorie-summary img {
+    width: 50px ;
+    vertical-align: middle;
+}
+#calorie-summary {
+    text-align: center;
+    font-size: 18px;
+    margin-top: -40px;
+}
+
+/*CONTAINER SECTION*/
+.container {
+    max-width: 1000px;
+    height: auto;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #f4f4f4;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    visibility: hidden;
+}
+
+.container h1 { 
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.container.visible {
+    visibility: visbile;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 2px;
+    background-color: black; 
+    visibility: hidden;
+    border: none; 
+}
+
+.divider {
+    width: 0px;
+}
+
+/* LEFT SIDE OF CONTAINER */
+.left-side {
+    margin-top: 10px;
+    max-width: 400px;
+    border: 2px solid black;
+}
+
+.left-side h1 {
+    margin: 10px;
+    font-size: 53px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+}
+
+.left-side h2 {
+    font-size: 15px;
+    text-align: left;
+    font-weight: 800;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+#calories {
+    display: flex;
+    justify-content: space-between;
+    font-size: 44px;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 7px solid black;
+}
+
+#protein, #fats, #carbohydrates, #sodium, #sugar, #saturated-fat, #potassium, #serving_size, #cholesterol{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    font-weight: 700;
+}
+
+.label {
+    text-align: left;
+}
+
+.value {
+    text-align: right;
+}
+
+#serving_size {
+    color: black;
+    font-weight: 900;
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 25px;
+    border-bottom: 15px solid black;
+}
+
+/*RIGHT SIDE SECTION*/
+.right-side {
+    margin-top: 10px;
+    border: 0px solid black;
+    width: 520px;
+    background-color: none;
+    position: relative;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.result {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+#add-form button {
+    position: absolute;
+    bottom: 0; 
+    right: 0; 
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #318a96;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#remove-form button {
+    position: absolute;
+    bottom: 0; 
+    left: 50%;     
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#remove-form button:hover {
+    background-color: red;
+}
+#food-select {
+    position: absolute;
+    bottom: 0; 
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#add-form button:hover {
+    background-color: #218838;
+}
+
+#burn-calories {
+    font-weight: 500;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 25px;
+}
+
+.runner img{
+    height: 90px;
+    margin-top: 10px;
+    
+    animation: moveLeftRight 4s infinite linear;
+    text-align: center;
+}
+@keyframes moveLeftRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(450px);
+    }
+}
+#jogging-time {
+    text-align: center;
+}
+
+#chartContainer {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    
+}
+
+#nutrientChart {
+    display: block;
+    max-width: 100%;
+    height: 400px;
+}
+/*Lower container, tracking portion*/
+.tracking-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-top: 2px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tracking-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tracked-food-item {
+    padding: 10px;
+    margin: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.tracked-food-item h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.tracked-food-item p {
+    margin: 5px 0;
+}
+
+/*testing area, can delete the following if things go south*/
+#summary-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+#summary-container h2 {
+    margin-bottom: 10px;
+}
+
+#nutrient-total {
+    font-weight: bold;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+#nutrient-total span {
+    margin: 0 10px;
+}
+
